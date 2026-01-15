@@ -13,6 +13,8 @@
 
 // ⚠️ 如果 outbounds 为空, 自动创建 COMPATIBLE(direct) 并插入 防止报错
 
+// === xream sing-box template.js (patched with urltest) ===
+
 function main(config) {
   const outbounds = []
   const selectors = []
@@ -24,17 +26,16 @@ function main(config) {
     proxyTags.push(p.tag)
   }
 
-  // ===== 地区分组（保持原逻辑）=====
+  // ===== 地区分组 =====
   function makeSelector(tag, filter) {
     const list = proxyTags.filter(name => filter(name))
     if (list.length === 0) return null
-    const s = {
+    selectors.push({
       type: "selector",
       tag,
       interrupt_exist_connections: true,
       outbounds: list
-    }
-    selectors.push(s)
+    })
     return tag
   }
 
@@ -44,7 +45,6 @@ function main(config) {
   makeSelector("🇯🇵 日本", n => /JP|Japan/i.test(n))
   makeSelector("🇺🇸 美国", n => /US|United/i.test(n))
 
-  // 其它
   selectors.push({
     type: "selector",
     tag: "其它",
@@ -52,7 +52,17 @@ function main(config) {
     outbounds: proxyTags
   })
 
-  // ===== 节点选择（核心入口）=====
+  // ===== 自动选择（urltest）=====
+  outbounds.push({
+    type: "urltest",
+    tag: "🚀 自动选择",
+    outbounds: proxyTags,
+    url: "https://www.gstatic.com/generate_204",
+    interval: "5m",
+    tolerance: 50
+  })
+
+  // ===== 节点选择 =====
   selectors.push({
     type: "selector",
     tag: "🚀 节点选择",
@@ -68,23 +78,12 @@ function main(config) {
     ]
   })
 
-  // ===== 自动选择（urltest）=====
-  outbounds.push({
-    type: "urltest",
-    tag: "🚀 自动选择",
-    outbounds: ["🚀 节点选择"],
-    url: "https://www.gstatic.com/generate_204",
-    interval: "5m",
-    tolerance: 50
-  })
-
-  // ===== 输出顺序很重要 =====
+  // ===== 返回给 Sub-Store =====
   return {
     outbounds: [
-      ...outbounds,   // 真实节点 + urltest
-      ...selectors    // 所有 selector
+      ...outbounds,
+      ...selectors
     ]
   }
 }
 
-export default main
