@@ -746,6 +746,7 @@
     "rules": [
       {
         "action": "route",
+        "__is_fake_ip": true,
         "type": "logical",
         "mode": "and",
         "rules": [
