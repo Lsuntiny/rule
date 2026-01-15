@@ -744,6 +744,15 @@
       }
     ],
     "rules": [
+       {
+        "action": "route",
+        "domain": [
+          "www.msftncsi.com",
+          "dns.msftncsi.com",
+          "www.msftconnecttest.com"
+        ],
+        "server": "Local-DNS"
+      },
       {
         "action": "route",
         "__is_fake_ip": true,
