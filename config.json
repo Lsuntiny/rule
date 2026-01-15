@@ -64,7 +64,24 @@
       "type": "selector",
       "tag": "🚀 节点选择",
       "interrupt_exist_connections": true,
-      "outbounds": []
+      "outbounds": [
+        "♻️ 自动选择",
+        "🇭🇰 香港",
+        "🇹🇼 台湾",
+        "🇸🇬 新加坡",
+        "🇯🇵 日本",
+        "🇺🇸 美国",
+        "其它",
+        "🎯 全球直连"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "♻️ 自动选择",
+      "outbounds": [ "{all}" ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 50
     },
     {
       "type": "selector",
