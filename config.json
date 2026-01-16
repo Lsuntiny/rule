@@ -65,83 +65,51 @@
       "tag": "🚀 节点选择",
       "interrupt_exist_connections": true,
       "outbounds": [
-        "⚡ 自动最快",
         "🇭🇰 香港",
         "🇹🇼 台湾",
         "🇸🇬 新加坡",
         "🇯🇵 日本",
         "🇺🇸 美国",
         "其它",
-        "🎯 全球直连"
+        "🎯 全球直连",
+        "{all}"
       ]
     },
-      
     {
-      "type": "urltest",
-      "tag": "⚡ 自动最快",
-      "outbounds": ["{all}"],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "300s",
-      "tolerance": 50
-    },
-  
-    {
-      "type": "urltest",
+      "type": "selector",
       "tag": "🇭🇰 香港",
-      "outbounds": [],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "300s",
-      "tolerance": 50
+      "interrupt_exist_connections": true,
+      "outbounds": []
     },
-  
     {
-      "type": "urltest",
+      "type": "selector",
       "tag": "🇹🇼 台湾",
-      "outbounds": [],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "300s",
-      "tolerance": 50
+      "interrupt_exist_connections": true,
+      "outbounds": []
     },
-  
     {
-      "type": "urltest",
+      "type": "selector",
       "tag": "🇸🇬 新加坡",
-      "outbounds": [],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "300s",
-      "tolerance": 50
+      "interrupt_exist_connections": true,
+      "outbounds": []
     },
-  
     {
-      "type": "urltest",
+      "type": "selector",
       "tag": "🇯🇵 日本",
-      "outbounds": [],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "300s",
-      "tolerance": 50
+      "interrupt_exist_connections": true,
+      "outbounds": []
     },
-  
     {
-      "type": "urltest",
+      "type": "selector",
       "tag": "🇺🇸 美国",
-      "outbounds": [],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "300s",
-      "tolerance": 80
+      "interrupt_exist_connections": true,
+      "outbounds": []
     },
-  
     {
-      "type": "urltest",
+      "type": "selector",
       "tag": "其它",
-      "outbounds": [],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "300s",
-      "tolerance": 80
-    },
-  
-    {
-      "type": "direct",
-      "tag": "🎯 全球直连"
+      "interrupt_exist_connections": true,
+      "outbounds": []
     },
     {
       "type": "selector",
