@@ -60,57 +60,122 @@
     }
   ],
   "outbounds": [
-    {
-      "type": "selector",
-      "tag": "🚀 节点选择",
-      "interrupt_exist_connections": true,
-      "outbounds": [
-        "🇭🇰 香港",
-        "🇹🇼 台湾",
-        "🇸🇬 新加坡",
-        "🇯🇵 日本",
-        "🇺🇸 美国",
-        "其它",
-        "🎯 全球直连",
-        "{all}"
-      ]
-    },
-    {
-      "type": "selector",
-      "tag": "🇭🇰 香港",
-      "interrupt_exist_connections": true,
-      "outbounds": []
-    },
-    {
-      "type": "selector",
-      "tag": "🇹🇼 台湾",
-      "interrupt_exist_connections": true,
-      "outbounds": []
-    },
-    {
-      "type": "selector",
-      "tag": "🇸🇬 新加坡",
-      "interrupt_exist_connections": true,
-      "outbounds": []
-    },
-    {
-      "type": "selector",
-      "tag": "🇯🇵 日本",
-      "interrupt_exist_connections": true,
-      "outbounds": []
-    },
-    {
-      "type": "selector",
-      "tag": "🇺🇸 美国",
-      "interrupt_exist_connections": true,
-      "outbounds": []
-    },
-    {
-      "type": "selector",
-      "tag": "其它",
-      "interrupt_exist_connections": true,
-      "outbounds": []
-    },
+"outbounds": [
+  {
+    "type": "selector",
+    "tag": "🚀 节点选择",
+    "interrupt_exist_connections": true,
+    "outbounds": [
+      "⚡ 自动最快",
+      "🇭🇰 香港",
+      "🇹🇼 台湾",
+      "🇸🇬 新加坡",
+      "🇯🇵 日本",
+      "🇺🇸 美国",
+      "其它",
+      "🎯 全球直连"
+    ]
+  },
+
+  {
+    "type": "urltest",
+    "tag": "⚡ 自动最快",
+    "outbounds": ["{all}"],
+    "url": "https://www.gstatic.com/generate_204",
+    "interval": "300s",
+    "tolerance": 50
+  },
+
+  {
+    "type": "urltest",
+    "tag": "🇭🇰 香港",
+    "outbounds": [
+      {
+        "type": "filter",
+        "filter": "(?i)港|hk|hongkong"
+      }
+    ],
+    "url": "https://www.gstatic.com/generate_204",
+    "interval": "300s",
+    "tolerance": 50
+  },
+
+  {
+    "type": "urltest",
+    "tag": "🇹🇼 台湾",
+    "outbounds": [
+      {
+        "type": "filter",
+        "filter": "(?i)台|tw|taiwan"
+      }
+    ],
+    "url": "https://www.gstatic.com/generate_204",
+    "interval": "300s",
+    "tolerance": 50
+  },
+
+  {
+    "type": "urltest",
+    "tag": "🇸🇬 新加坡",
+    "outbounds": [
+      {
+        "type": "filter",
+        "filter": "(?i)新|sg|singapore"
+      }
+    ],
+    "url": "https://www.gstatic.com/generate_204",
+    "interval": "300s",
+    "tolerance": 50
+  },
+
+  {
+    "type": "urltest",
+    "tag": "🇯🇵 日本",
+    "outbounds": [
+      {
+        "type": "filter",
+        "filter": "(?i)日|jp|japan|tokyo|osaka"
+      }
+    ],
+    "url": "https://www.gstatic.com/generate_204",
+    "interval": "300s",
+    "tolerance": 50
+  },
+
+  {
+    "type": "urltest",
+    "tag": "🇺🇸 美国",
+    "outbounds": [
+      {
+        "type": "filter",
+        "filter": "(?i)美|us|usa|united states|los angeles|san jose"
+      }
+    ],
+    "url": "https://www.gstatic.com/generate_204",
+    "interval": "300s",
+    "tolerance": 80
+  },
+
+  {
+    "type": "urltest",
+    "tag": "其它",
+    "outbounds": [
+      {
+        "type": "filter",
+        "filter": ".*"
+      }
+    ],
+    "url": "https://www.gstatic.com/generate_204",
+    "interval": "300s",
+    "tolerance": 80
+  },
+
+  {
+    "type": "direct",
+    "tag": "🎯 全球直连"
+  }
+]
+
     {
       "type": "selector",
       "tag": "🤖 OpenAI",
