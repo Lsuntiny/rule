@@ -78,7 +78,7 @@
     {
     "type": "urltest",
     "tag": "⚡ 自动选择",
-    "outbounds": ["{all}"],
+    "outbounds": [],
     "url": "https://www.gstatic.com/generate_204",
     "interval": "300s",
     "tolerance": 50
